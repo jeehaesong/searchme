@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Books from './Books';
+import Cities from './Cities';
+import Data from './Data.json'
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        <header>          
+          <img src={"/assets/searchme_logo.png"} alt="logo"/>
         </header>
+        <div className="app-container">
+          <Books data={Data.books} placeholder={'Find a book'} thumnailImg ={Data.booksUrl} autofocus searchKeyValue={'title'}/>
+          <Cities data={Data.cities} placeholder={'Find a book'} thumnailImg ={Data.cityUrl}/>
+        </div>
       </div>
     );
   }
