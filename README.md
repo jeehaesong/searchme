@@ -1,44 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*search me*  - autocomplete feature demo on search box
 
-## Available Scripts
 
-In the project directory, you can run:
+### To getting started : `yarn start`
 
-### `npm start`
+Open [http://localhost:3000](http://localhost:3000) to see 'Search me' in the browser.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### To build: `yarn build`
 
-### `npm test`
+Build the app for production to the `build` folder.<br>
+The build is minified and the filenames include the hashes.
+
+
+### To test: `yarn test`
 
 Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Thought Process
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The goal of 'search me' is to show a simple autocomplete feature within a search box. In this app, you can search within a limited set of 'cities' and 'books'. when the user types at least three characters into the input box, it lists results that best match the user input (in this case, finds all items that have the search string).
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Cities and books behave similarly, the only difference is that 'cities' is an array of strings while 'books' in an array of JavaScript objects.
+Since JS objects in 'books' have two keys, the requirement is to search only by the 'title' property, not the 'author' property.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Thus, I decided to create a High-Order-Component called 'withSearch'. When passing the component 'Books' and 'Cities' to 'withSearch', the HOC should be provide a search bar and able to handle the two different types of data (one is an array of strings, and the other is an array of objects).
+I am assuming that the data could come in a JSON format for an app of this type. Therefore, instead of having 'cities' and 'books' as global variables, I created a Data.json sile and imported into 'App.js'.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Responsive page
+'search me' is mobile-friendly.
