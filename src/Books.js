@@ -9,7 +9,14 @@ class Books extends Component {
         <div className="container">
             {
             filteredData &&
-            filteredData.map( (book,idx) => <div key={`${idx}-${book}`} className="result-list">{`${book.title} by ${book.author}`}</div>)
+            filteredData.map( (book,idx) => (
+              <div key={`${idx}-${book}`} className="result-list">
+                {`${book.title}`}
+                <div className="result-extra-info">
+                  {`${book.author}`}
+                </div>
+              </div>
+            ))
             }
         </div>
     );
